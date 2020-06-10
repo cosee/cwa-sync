@@ -9,6 +9,7 @@ jobs:
         with:
           repository: corona-warn-app/cwa-app-ios
           ref: development
+          fetch-depth: 0
       - run: |
           mkdir ~/.ssh
           chmod -R 700 ~/.ssh
