@@ -1,7 +1,7 @@
 name: Sync
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "*/15 7-19 * * 1-5"
 
 jobs:
   sync_cwa_server:
