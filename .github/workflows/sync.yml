@@ -24,7 +24,7 @@ jobs:
       - run: |
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
-          git push -f git@github.com:cosee/cwa-app-ios.git development
+          git push git@github.com:cosee/cwa-app-ios.git development
     env:
       SSH_KEY: ${{ secrets.IOS_SSH_KEY }}
       SSH_PUB_KEY:  ${{ secrets.IOS_SSH_PUB_KEY }}
@@ -48,7 +48,7 @@ jobs:
       - run: |
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
-          git push -f git@github.com:cosee/cwa-app-android.git dev
+          git push git@github.com:cosee/cwa-app-android.git dev
     env:
       SSH_KEY: ${{ secrets.ANDROID_SSH_KEY }}
       SSH_PUB_KEY:  ${{ secrets.ANDROID_SSH_PUB_KEY }}
