@@ -4,6 +4,30 @@ on:
     - cron: "*/5 * * * *"
 
 jobs:
+  sync_cwa_server:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: corona-warn-app/cwa-server
+          ref: master
+          fetch-depth: 0
+      - run: |
+          mkdir ~/.ssh
+          chmod -R 700 ~/.ssh
+      - run: |
+          echo $SSH_PUB_KEY > ~/.ssh/id_ed25519.pub
+          chmod 644 ~/.ssh/id_ed25519.pub
+      - run: |
+          echo $SSH_KEY | base64 -d > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+      - run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git push git@github.com:cosee/cwa-server.git master
+    env:
+      SSH_KEY: ${{ secrets.CWA_SERVER_SSH_KEY }}
+      SSH_PUB_KEY:  ${{ secrets.CWA_SERVER_SSH_PUB_KEY }}
   sync_ios:
     runs-on: ubuntu-latest
     steps:
