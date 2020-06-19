@@ -34,7 +34,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: corona-warn-app/cwa-app-ios
-          ref: next
+          ref: develop
           fetch-depth: 0
       - run: |
           mkdir ~/.ssh
@@ -48,7 +48,7 @@ jobs:
       - run: |
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
-          git push git@github.com:cosee/cwa-app-ios.git next
+          git push git@github.com:cosee/cwa-app-ios.git develop
     env:
       SSH_KEY: ${{ secrets.IOS_SSH_KEY }}
       SSH_PUB_KEY:  ${{ secrets.IOS_SSH_PUB_KEY }}
@@ -58,7 +58,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: corona-warn-app/cwa-app-android
-          ref: master
+          ref: dev
           fetch-depth: 0
       - run: |
           mkdir ~/.ssh
@@ -72,7 +72,7 @@ jobs:
       - run: |
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
-          git push git@github.com:cosee/cwa-app-android.git master
+          git push git@github.com:cosee/cwa-app-android.git dev
     env:
       SSH_KEY: ${{ secrets.ANDROID_SSH_KEY }}
       SSH_PUB_KEY:  ${{ secrets.ANDROID_SSH_PUB_KEY }}
